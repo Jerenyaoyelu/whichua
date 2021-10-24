@@ -6,7 +6,7 @@
         <i slot="prefix" class="el-input__icon el-icon-search"></i>
       </el-input>
     </div>
-    <div class="page-btm"></div>
+    <div class="page-btm">{{ uaMap[content] }}</div>
   </div>
 </template>
 
@@ -21,6 +21,11 @@ export default {
       HomeDefaultBg,
       content: "",
     };
+  },
+  computed: {
+    uaMap() {
+      return this.$store.getters.uaMap;
+    },
   },
 };
 </script>
