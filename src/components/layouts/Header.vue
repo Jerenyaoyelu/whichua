@@ -49,9 +49,9 @@ export default {
         });
       }
     },
-    // goToGithub() {
-    //   window.open("https://github.com/Jerenyaoyelu/whichua", "_blank");
-    // },
+    goToGithub() {
+      window.open("https://github.com/Jerenyaoyelu/whichua", "_blank");
+    },
   },
 };
 </script>
