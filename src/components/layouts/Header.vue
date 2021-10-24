@@ -16,12 +16,12 @@
       >
         <el-menu-item index="1">关于作者</el-menu-item>
       </el-menu>
-      <!-- <j-icon
+      <j-icon
         class="icon"
         type="github"
         :size="24"
         @click="goToGithub"
-      ></j-icon> -->
+      ></j-icon>
     </div>
   </div>
 </template>
