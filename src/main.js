@@ -3,7 +3,7 @@ import elementUI from "element-ui";
 import App from "./App.vue";
 import store from "../store";
 import router from "../routers";
-// import "@/components/icons";
+import "@/components/icons";
 
 import "element-ui/lib/theme-chalk/index.css";
 import "@/styles/basic.less";
