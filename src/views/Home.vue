@@ -1,6 +1,5 @@
 <template>
   <div class="page">
-    <Header />
     <div class="page-top" :style="`background-image:url(${HomeDefaultBg})`">
       <el-input class="search-bar" placeholder="请输入机型" v-model="content">
         <i slot="prefix" class="el-input__icon el-icon-search"></i>
@@ -12,10 +11,8 @@
 
 <script>
 import HomeDefaultBg from "@/assets/images/home-default-bg.jpg";
-import Header from "@/components/layouts/Header.vue";
 
 export default {
-  components: { Header },
   data() {
     return {
       HomeDefaultBg,
