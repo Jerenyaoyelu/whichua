@@ -9,11 +9,11 @@ export default [
         name: "Home",
         component: () => import("@/views/Home.vue"),
       },
-      // {
-      //   path: "/about",
-      //   name: "AboutMe",
-      //   component: () => import("@/views/About.vue"),
-      // },
+      {
+        path: "/about",
+        name: "AboutMe",
+        component: () => import("@/views/About.vue"),
+      },
     ],
   },
 ];
