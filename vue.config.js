@@ -1,10 +1,26 @@
+const path = require("path");
 const { resolve } = require("path");
+
+function addStyleResource(rule) {
+  rule
+    .use("style-resource")
+    .loader("style-resources-loader")
+    .options({
+      patterns: [path.resolve(__dirname, "./src/styles/global.less")],
+    });
+}
 
 module.exports = {
   publicPath: "./",
   productionSourceMap: false,
   runtimeCompiler: true,
   chainWebpack: (config) => {
+    // 设置less全局参数
+    const types = ["vue-modules", "vue", "normal-modules", "normal"];
+    types.forEach((type) =>
+      addStyleResource(config.module.rule("less").oneOf(type))
+    );
+
     const rawRule = config.module.rule("raw");
     rawRule
       .test(/\.txt$/i)
