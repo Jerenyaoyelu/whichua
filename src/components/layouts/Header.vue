@@ -68,6 +68,8 @@ export default {
   align-items: center;
   justify-content: space-between;
   box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+  background: #fff;
+  z-index: 1999;
   .hd-lt {
     display: flex;
     align-items: center;
