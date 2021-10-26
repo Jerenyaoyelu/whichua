@@ -1,21 +1,45 @@
 <template>
-  <div class="card-container" :style="`background-image:url(${Bg})`">
-    <div class="info">
-      <div class="text-item">
-        <label><j-icon type="system" :size="16"></j-icon>操作系统：</label>
-        {{ data.system }}
-      </div>
-      <div class="text-item">
-        <label><j-icon type="user-agent" :size="16"></j-icon>UA：</label>
-        {{ data.ua }}
-      </div>
+  <div class="card-container">
+    <div class="text-item">
+      <label
+        ><j-icon class="icon" type="device" :size="16"></j-icon>
+        <j-icon class="icon-active" type="device-active" :size="16"></j-icon
+        >机型：</label
+      >
+      {{ data.device }}
+    </div>
+    <div class="text-item">
+      <label
+        ><j-icon class="icon" type="browser" :size="16"></j-icon>
+        <j-icon class="icon-active" type="browser-active" :size="16"></j-icon
+        >浏览器：</label
+      >
+      {{ data.browser }}
+    </div>
+    <div class="text-item">
+      <label>
+        <j-icon class="icon" :type="systemIcon" :size="16"></j-icon>
+        <j-icon
+          class="icon-active"
+          :type="systemIconActive"
+          :size="16"
+        ></j-icon>
+        操作系统：</label
+      >
+      {{ data.system }}
+    </div>
+    <div class="text-item">
+      <label
+        ><j-icon class="icon" type="user-agent" :size="16"></j-icon>
+        <j-icon class="icon-active" type="user-agent-active" :size="16"></j-icon
+        >UA：</label
+      >
+      {{ data.ua }}
     </div>
   </div>
 </template>
 
 <script>
-import Bg from "@/assets/images/uacard-default-bg.jpg";
-
 export default {
   props: {
     data: {
@@ -23,48 +47,36 @@ export default {
       required: true,
     },
   },
-  data() {
-    return {
-      Bg,
-    };
+  computed: {
+    systemIcon() {
+      const lower = this.data.system.toLowerCase();
+      if (lower === "android") return "android";
+      if (["iphone", "ipad"].includes(lower)) return "ios";
+      return "system";
+    },
+    systemIconActive() {
+      const lower = this.data.system.toLowerCase();
+      if (lower === "android") return "android-active";
+      if (["iphone", "ipad"].includes(lower)) return "ios-active";
+      return "system";
+    },
   },
 };
 </script>
 
 <style lang="less" scoped>
 .card-container {
-  background-repeat: no-repeat;
-  background-size: cover;
-  width: 500px;
-  height: 320px;
-  margin: 0 20px 30px;
-  border-radius: 20px;
-  position: relative;
+  width: 350px;
+  height: 190px;
+  margin: 0 10px 20px;
+  border-radius: 10px;
+  border: 1px solid #d4d4d5;
   .box-shadow();
   &:hover {
     .box-shadow__hover();
   }
-  &:after {
-    content: "";
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    left: 0;
-    top: 0;
-    background: inherit;
-    border-radius: 20px;
-    filter: blur(2px);
-  }
 
-  .info {
-    width: 270px;
-    height: 200px;
-    position: absolute;
-    top: 65px;
-    left: 133px;
-    padding: 10px 5px;
-  }
-
+  padding: 20px 25px;
   .text-item {
     text-align: left;
     font-size: 14px;
@@ -75,7 +87,7 @@ export default {
     font-family: PingFangSC-Regular, PingFang SC;
     display: flex;
     align-items: flex-start;
-    &:first-of-type {
+    &:not(:last-of-type) {
       margin-bottom: 10px;
     }
     label {
@@ -84,6 +96,24 @@ export default {
       flex-shrink: 0;
       display: flex;
       align-items: center;
+    }
+  }
+
+  .icon-active,
+  .icon {
+    margin-right: 5px;
+  }
+
+  .icon-active {
+    display: none;
+  }
+
+  &:hover {
+    .icon-active {
+      display: inline;
+    }
+    .icon {
+      display: none;
     }
   }
 }

@@ -14,6 +14,11 @@ export default [
         name: "AboutMe",
         component: () => import("@/views/About.vue"),
       },
+      {
+        path: "/search/:key",
+        name: "Search",
+        component: () => import("@/views/Search.vue"),
+      },
     ],
   },
 ];
