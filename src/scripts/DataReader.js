@@ -9,9 +9,11 @@ export default class DataReader {
   __init() {
     const db = data.split("\n");
     db.forEach((item) => {
-      const [device, system, browser, ua] = item.trim().split("|");
-      if (!this.dataMap[device]) this.dataMap[device] = {};
-      this.dataMap[device][browser] = {
+      const [brand, device, system, browser, ua] = item.trim().split("|");
+      if (!this.dataMap[brand]) this.dataMap[brand] = {};
+      this.dataMap[brand][device] = {
+        brand,
+        device,
         system,
         browser,
         ua,
