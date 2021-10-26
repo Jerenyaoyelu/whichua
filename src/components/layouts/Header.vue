@@ -4,16 +4,11 @@
       <img :src="Logo" />
       <div class="logo-text">
         <div class="title">WhichUA</div>
-        <div class="desc">Detect every phone</div>
+        <div class="desc">手机UA大全</div>
       </div>
     </div>
     <div class="hd-rt">
-      <el-menu
-        :default-active="activeIndex"
-        @select="handleSelect"
-        class="menus"
-        mode="horizontal"
-      >
+      <el-menu @select="handleSelect" class="menus" mode="horizontal">
         <el-menu-item index="1">关于作者</el-menu-item>
       </el-menu>
       <j-icon
@@ -33,7 +28,6 @@ export default {
   data() {
     return {
       Logo,
-      activeIndex: "1",
     };
   },
   methods: {
