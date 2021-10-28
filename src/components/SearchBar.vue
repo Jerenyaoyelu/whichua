@@ -36,12 +36,16 @@ export default {
   methods: {
     handleSearch() {
       if (this.content) {
-        this.$router.push({
-          name: "Search",
-          params: {
-            key: this.content,
-          },
-        });
+        // 搜索页面下当前key相同则不触发
+        const { name, params } = this.$route;
+        if (name !== "Search" || params.key !== this.content) {
+          this.$router.push({
+            name: "Search",
+            params: {
+              key: this.content,
+            },
+          });
+        }
       }
     },
     handleSelect(item) {

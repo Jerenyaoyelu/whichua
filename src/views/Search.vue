@@ -26,6 +26,13 @@ export default {
       subKey: "",
     };
   },
+  watch: {
+    $route: {
+      handler() {
+        this.subKey = "";
+      },
+    },
+  },
   computed: {
     keyword() {
       return this.$route.params.key;
