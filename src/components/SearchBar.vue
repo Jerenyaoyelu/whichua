@@ -25,8 +25,9 @@ export default {
       uaList: [],
     };
   },
-
   created() {
+    const { key } = this.$route.params;
+    if (key) this.content = key;
     Object.keys(this.$store.getters.uaMap).forEach((item) => {
       this.uaList.push({
         value: item,
