@@ -34,7 +34,7 @@
         <j-icon class="icon-active" type="user-agent-active" :size="16"></j-icon
         >UA：</label
       >
-      {{ data.ua }}
+      <div class="ua-block">{{ data.ua }}</div>
     </div>
   </div>
 </template>
@@ -96,6 +96,16 @@ export default {
       flex-shrink: 0;
       display: flex;
       align-items: center;
+    }
+
+    .ua-block {
+      text-overflow: ellipsis;
+      overflow: hidden;
+      display: -webkit-box;
+      white-space: normal;
+      -webkit-box-orient: vertical;
+      max-height: 100px;
+      -webkit-line-clamp: 5;
     }
   }
 
