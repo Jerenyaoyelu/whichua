@@ -48,11 +48,13 @@ export default {
     },
     list() {
       if (this.subKey) {
-        return this.mappedResult[this.subKey]
-          ? [this.mappedResult[this.subKey]]
-          : [];
+        return this.mappedResult[this.subKey] || [];
       }
-      return Object.values(this.mappedResult);
+      let res = [];
+      Object.keys(this.mappedResult).forEach((k) => {
+        res = [...res, ...this.mappedResult[k]];
+      });
+      return res;
     },
   },
   methods: {

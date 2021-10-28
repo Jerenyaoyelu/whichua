@@ -11,13 +11,14 @@ export default class DataReader {
     db.forEach((item) => {
       const [brand, device, system, browser, ua] = item.trim().split("|");
       if (!this.dataMap[brand]) this.dataMap[brand] = {};
-      this.dataMap[brand][device] = {
+      if (!this.dataMap[brand][device]) this.dataMap[brand][device] = [];
+      this.dataMap[brand][device].push({
         brand,
         device,
         system,
         browser,
         ua,
-      };
+      });
     });
   }
 }
