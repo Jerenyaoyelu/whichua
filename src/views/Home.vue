@@ -1,14 +1,7 @@
 <template>
   <div class="page">
     <div class="page-top" :style="`background-image:url(${HomeDefaultBg})`">
-      <el-input
-        @change="handleSearch"
-        class="search-bar"
-        placeholder="请输入手机品牌"
-        v-model="content"
-      >
-        <i slot="prefix" class="el-input__icon el-icon-search"></i>
-      </el-input>
+      <SearchBar />
     </div>
     <div class="page-btm"></div>
   </div>
@@ -16,26 +9,16 @@
 
 <script>
 import HomeDefaultBg from "@/assets/images/home-default-bg.jpg";
+import SearchBar from "@/components/SearchBar.vue";
 
 export default {
   data() {
     return {
       HomeDefaultBg,
-      content: "",
-      uaList: [],
     };
   },
-  methods: {
-    handleSearch() {
-      if (this.content) {
-        this.$router.push({
-          name: "Search",
-          params: {
-            key: this.content,
-          },
-        });
-      }
-    },
+  components: {
+    SearchBar,
   },
 };
 </script>
@@ -53,9 +36,6 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-    .search-bar {
-      width: 650px;
-    }
   }
   &-btm {
     padding: 40px 50px;

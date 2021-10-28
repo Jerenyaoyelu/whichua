@@ -8,6 +8,11 @@
       </div>
     </div>
     <div class="hd-rt">
+      <SearchBar
+        v-if="$route.name === 'Search'"
+        class="hd-inline"
+        :width="300"
+      />
       <el-menu @select="handleSelect" class="menus" mode="horizontal">
         <el-menu-item index="1">关于作者</el-menu-item>
       </el-menu>
@@ -23,8 +28,12 @@
 
 <script>
 import Logo from "@/assets/images/logo.png";
+import SearchBar from "@/components/SearchBar.vue";
 
 export default {
+  components: {
+    SearchBar,
+  },
   data() {
     return {
       Logo,
@@ -100,6 +109,12 @@ export default {
     .icon {
       cursor: pointer;
     }
+  }
+
+  .hd-inline {
+    position: relative;
+    top: -25px;
+    margin-right: 30px;
   }
 }
 </style>
