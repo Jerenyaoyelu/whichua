@@ -18,6 +18,9 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+  min-height: calc(100vh - 60px);
+  min-width: 1280px;
+  background: #f5f5f5;
 }
 
 body {

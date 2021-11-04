@@ -14,7 +14,7 @@
         :width="300"
       />
       <el-menu @select="handleSelect" class="menus" mode="horizontal">
-        <el-menu-item index="1">关于作者</el-menu-item>
+        <el-menu-item index="1">About Me</el-menu-item>
       </el-menu>
       <j-icon
         class="icon"

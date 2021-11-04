@@ -16,8 +16,10 @@
 
 <script>
 import UACard from "@/components/UACard.vue";
+import dataMixin from "@/components/mixins";
 
 export default {
+  mixins: [dataMixin],
   components: {
     UACard,
   },
@@ -36,9 +38,6 @@ export default {
   computed: {
     keyword() {
       return this.$route.params.key;
-    },
-    uaMap() {
-      return this.$store.getters.uaMap;
     },
     mappedResult() {
       return this.uaMap[this.keyword] || {};
