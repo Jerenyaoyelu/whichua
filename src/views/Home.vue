@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import HomeDefaultBg from "@/assets/images/home-default-bg.jpg";
+import HomeDefaultBg from "@/assets/images/home-banner-bg.gif";
 import SearchBar from "@/components/SearchBar.vue";
 import CategoryNav from "@/components/CategoryNavCard.vue";
 import UACard from "@/components/UACard.vue";
@@ -55,6 +55,7 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
+    background-position-y: center;
   }
   &-btm {
     padding: 40px 50px;
