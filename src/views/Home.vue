@@ -4,7 +4,21 @@
       <SearchBar />
     </div>
     <div class="page-btm">
-      <div class="main"></div>
+      <div class="section">
+        <div class="title">What We Cover</div>
+        <div class="content">
+          <p class="left">
+            本站涵盖了目前国内流行的所有手机品牌和部分型号，截至目前共收录了<span
+              >{{ totalBrands }}</span
+            >款手机品牌，<span>{{ totalDevices }}</span
+            >种手机型号，和<span>{{ totalBrowers }}</span
+            >条不同浏览器UA信息，共各位看官查看，且还在不断更新中...
+          </p>
+          <div class="right">
+            <BrandsPie :data="brandsList" />
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -12,15 +26,40 @@
 <script>
 import HomeDefaultBg from "@/assets/images/home-banner-bg.gif";
 import SearchBar from "@/components/SearchBar.vue";
+import BrandsPie from "@/components/charts/BrandsPie.vue";
+import dataMixin from "@/components/mixins";
 
 export default {
+  mixins: [dataMixin],
   data() {
     return {
       HomeDefaultBg,
+      brandsList: [],
+      totalBrands: 0,
+      totalDevices: 0,
+      totalBrowers: 0,
     };
   },
   components: {
     SearchBar,
+    BrandsPie,
+  },
+  created() {
+    const allBrands = Object.keys(this.uaMap);
+    this.totalBrands = allBrands.length;
+    allBrands.forEach((k) => {
+      const item = this.uaMap[k];
+      this.totalDevices += Object.keys(item).length;
+      Object.keys(item).forEach((subK) => {
+        this.totalBrowers += item[subK].length;
+        this.brandsList.push({
+          type: k,
+          name: subK,
+          value: item[subK].length,
+          nameValue: Object.keys(item).length,
+        });
+      });
+    });
   },
 };
 </script>
@@ -42,13 +81,29 @@ export default {
   }
   &-btm {
     padding: 40px 50px;
-  }
-
-  .main {
-    width: 100%;
-    margin: 0 auto;
-    position: relative;
-    padding-top: 114px;
+    .section {
+      .title {
+        font-size: 60px;
+        font-family: PingFangSC-Medium, PingFang SC;
+      }
+      .left {
+        font-family: PingFangSC-Regular, PingFang SC;
+        font-size: 24px;
+        width: 600px;
+        text-align: left;
+        line-height: 48px;
+        span {
+          color: #308ce8;
+          font-size: 36px;
+          text-decoration: underline;
+        }
+      }
+      .content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+    }
   }
 }
 </style>
