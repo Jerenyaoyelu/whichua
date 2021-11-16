@@ -14,7 +14,8 @@
         :width="300"
       />
       <el-menu @select="handleSelect" class="menus" mode="horizontal">
-        <el-menu-item index="1">About Me</el-menu-item>
+        <el-menu-item index="1">品牌</el-menu-item>
+        <el-menu-item index="2">About Me</el-menu-item>
       </el-menu>
       <j-icon
         class="icon"
@@ -47,6 +48,12 @@ export default {
     },
     handleSelect(key) {
       if (key === "1") {
+        this.$router.push({
+          name: "BrandsList",
+        });
+      }
+
+      if (key === "2") {
         this.$router.push({
           name: "AboutMe",
         });
