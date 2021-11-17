@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper">
+  <div :class="['wrapper', direction]">
     <div class="hd-lt" @click="goToHome">
       <img :src="Logo" />
       <div class="logo-text">
@@ -15,7 +15,7 @@
       />
       <el-menu @select="handleSelect" class="menus" mode="horizontal">
         <el-menu-item index="1">品牌</el-menu-item>
-        <el-menu-item index="2">About Me</el-menu-item>
+        <el-menu-item index="2">关于</el-menu-item>
       </el-menu>
       <j-icon
         class="icon"
@@ -38,6 +38,19 @@ export default {
   data() {
     return {
       Logo,
+      direction: "",
+    };
+  },
+  mounted() {
+    let lastTop = 0;
+    window.onscroll = () => {
+      const curTop = document.scrollingElement.scrollTop;
+      if (curTop >= lastTop) {
+        this.direction = "down";
+      } else {
+        this.direction = "up";
+      }
+      lastTop = curTop;
     };
   },
   methods: {
@@ -80,6 +93,16 @@ export default {
   box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
   background: #fff;
   z-index: 1999;
+  &.up {
+    top: 0px;
+    transition: top 0.4s ease-in;
+    -webkit-transition: top 0.4s ease-in;
+  }
+  &.down {
+    top: -60px;
+    transition: top 0.1s ease-out;
+    -webkit-transition: top 0.1s ease-out;
+  }
   .hd-lt {
     display: flex;
     align-items: center;
