@@ -45,7 +45,7 @@ export default {
     let lastTop = 0;
     window.onscroll = () => {
       const curTop = document.scrollingElement.scrollTop;
-      if (curTop >= lastTop) {
+      if (curTop > lastTop) {
         this.direction = "down";
       } else {
         this.direction = "up";
