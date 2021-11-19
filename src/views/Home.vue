@@ -20,11 +20,28 @@
         </div>
       </div>
       <div class="section">
-        <div class="right"></div>
+        <div class="right mob">
+          <div class="show-mob">
+            <img :src="mobImg" />
+            <div class="example">
+              <div>
+                <label>当前是否移动端：</label
+                ><span>{{ deviceDetail.isPc ? "否" : "是" }}</span>
+              </div>
+              <div v-if="deviceDetail.isPc === false">
+                <label>屏幕方向：</label
+                ><span>{{ orientText(deviceDetail.orient) }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
         <div class="desc">
           <div class="title">What We Build</div>
           <p class="left">
-            基于本站的数据优势，量身打造了更加精准的responsiveJS依赖包，探测设备是否是移动端还是PC端，检验屏幕是否横屏抑或竖屏
+            基于本站的数据优势，量身打造了超轻量<a
+              href="https://github.com/Jerenyaoyelu/mob-spy"
+              >mob-spy依赖包</a
+            >，更加紧准的探测设备是否是移动端还是PC端，检验屏幕是否横屏抑或竖屏，且支持响应窗口大小变化
           </p>
         </div>
       </div>
@@ -37,6 +54,14 @@ import HomeDefaultBg from "@/assets/images/home-banner-bg.gif";
 import SearchBar from "@/components/SearchBar.vue";
 import BrandsPie from "@/components/charts/BrandsPie.vue";
 import dataMixin from "@/components/mixins";
+import Mob from "mob-spy";
+import mobImg from "@/assets/images/mob-example.png";
+
+const mob = new Mob();
+const oMap = {
+  portrait: "竖屏",
+  landscape: "横屏",
+};
 
 export default {
   mixins: [dataMixin],
@@ -47,13 +72,30 @@ export default {
       totalBrands: 0,
       totalDevices: 0,
       totalBrowers: 0,
+      mobImg,
+      deviceDetail: {
+        isPc: null,
+        orient: "",
+      },
     };
   },
   components: {
     SearchBar,
     BrandsPie,
   },
+  computed: {
+    orientText() {
+      return (t) => {
+        return oMap[t];
+      };
+    },
+  },
   created() {
+    this.setDeviceDetail();
+    window.onresize = () => {
+      mob.onWindowResize();
+      this.setDeviceDetail();
+    };
     const allBrands = Object.keys(this.uaMap);
     this.totalBrands = allBrands.length;
     allBrands.forEach((k) => {
@@ -69,6 +111,12 @@ export default {
         });
       });
     });
+  },
+  methods: {
+    setDeviceDetail() {
+      this.deviceDetail.isPc = mob.getIsPc;
+      this.deviceDetail.orient = mob.getOrientation;
+    },
   },
 };
 </script>
@@ -113,6 +161,37 @@ export default {
           color: #308ce8;
           font-size: 36px;
           text-decoration: underline;
+        }
+      }
+
+      .right.mob {
+        width: 600px;
+      }
+
+      .show-mob {
+        width: 80%;
+        border-radius: 10px;
+        background: #fff;
+        padding: 10px 5px;
+        .box-shadow__float();
+        img {
+          width: 100%;
+          height: 260px;
+          object-fit: contain;
+          object-position: top left;
+        }
+        .example {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 10px 10px 0;
+          border-top: 1px solid #bcbcbc;
+          text-align: left;
+          font-size: 18px;
+          font-family: PingFangSC-Regular, PingFang SC;
+          label {
+            font-family: PingFangSC-Medium, PingFang SC;
+          }
         }
       }
     }
