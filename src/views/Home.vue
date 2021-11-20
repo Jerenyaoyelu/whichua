@@ -28,7 +28,7 @@
                 <label>当前是否移动端：</label
                 ><span>{{ deviceDetail.isPc ? "否" : "是" }}</span>
               </div>
-              <div v-if="deviceDetail.isPc === false">
+              <div>
                 <label>屏幕方向：</label
                 ><span>{{ orientText(deviceDetail.orient) }}</span>
               </div>

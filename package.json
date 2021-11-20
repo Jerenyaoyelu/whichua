@@ -15,7 +15,7 @@
     "element-ui": "^2.15.6",
     "less": "3.9.0",
     "less-loader": "^5.0.0",
-    "mob-spy": "1.0.2",
+    "mob-spy": "^1.0.4",
     "promise.prototype.finally": "^3.1.2",
     "raw-loader": "^4.0.2",
     "style-resources-loader": "^1.4.1",
