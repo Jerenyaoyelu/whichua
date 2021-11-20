@@ -33,5 +33,5 @@ vivo|X9s L|Android|手机百度|Mozilla/5.0 (Linux; Android 8.1.0; vivo X9s L Bu
 OPPO|A55 5G|Android|Chrome|Mozilla/5.0 (Linux; U; Android 11; zh-cn; PEMM00 Build/RP1A.200720.011) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/70.0.3538.80 Mobile Safari/537.36 HeyTapBrowser/40.7.26.1
 vivo|iQOO Pro 5G|Android|UC浏览器|Mozilla/5.0 (Linux; U; Android 9; zh-CN; V1916A Build/PKQ1.190714.001) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/57.0.2987.108 UCBrowser/12.8.2.1062 Mobile Safari/537.36
 一加|6|Android|手机百度|Mozilla/5.0 (Linux; Android 9; ONEPLUS A6000 Build/PKQ1.180716.001; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/76.0.3809.89 Mobile Safari/537.36 T7/11.20 SP-engine/2.16.0 baiduboxapp/11.20.0.14 (Baidu; P1 9) NABar/2.0
-iPad|iPad Pro|Chrome|Mozilla/5.0 (iPad; CPU OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) CriOS/95.0.4638.50 Mobile/15E148 Safari/604.1
-iPad|iPad Pro|Safari|Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Safari/605.1.15
+iPad|iPad Pro|MacOS|Chrome|Mozilla/5.0 (iPad; CPU OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) CriOS/95.0.4638.50 Mobile/15E148 Safari/604.1
+iPad|iPad Pro|MacOS|Safari|Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Safari/605.1.15
